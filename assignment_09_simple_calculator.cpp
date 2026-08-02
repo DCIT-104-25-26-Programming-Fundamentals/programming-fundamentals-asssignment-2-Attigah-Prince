@@ -73,3 +73,78 @@
 #include <cmath>
 using namespace std;
 
+int main() {
+    int choice;
+
+    do {
+        cout << endl;
+        cout << "============================" << endl;
+        cout << "     SIMPLE CALCULATOR" << endl;
+        cout << "============================" << endl;
+        cout << "1. Addition" << endl;
+        cout << "2. Subtraction" << endl;
+        cout << "3. Multiplication" << endl;
+        cout << "4. Division" << endl;
+        cout << "5. Modulus" << endl;
+        cout << "6. Exponentiation" << endl;
+        cout << "7. Quit" << endl;
+        cout << "Select an operation (1-7): ";
+        cin >> choice;
+
+        if (choice == 7) {
+            cout << "Goodbye!" << endl;
+            break;
+        }
+
+        if (choice < 1 || choice > 7) {
+            cout << "Error: Invalid choice. Please select a number from 1 to 7." << endl;
+            continue;
+        }
+
+        double num1, num2;
+
+        cout << "Enter first number : ";
+        cin >> num1;
+        cout << "Enter second number: ";
+        cin >> num2;
+
+        cout << fixed << setprecision(2);
+
+        if (choice == 1) {
+            double result = num1 + num2;
+            cout << "Result: " << num1 << " + " << num2 << " = " << result << endl;
+
+        } else if (choice == 2) {
+            double result = num1 - num2;
+            cout << "Result: " << num1 << " - " << num2 << " = " << result << endl;
+
+        } else if (choice == 3) {
+            double result = num1 * num2;
+            cout << "Result: " << num1 << " * " << num2 << " = " << result << endl;
+
+        } else if (choice == 4) {
+            if (num2 == 0) {
+                cout << "Error: Cannot divide by zero." << endl;
+            } else {
+                double result = num1 / num2;
+                cout << "Result: " << num1 << " / " << num2 << " = " << result << endl;
+            }
+
+        } else if (choice == 5) {
+            if (num2 == 0) {
+                cout << "Error: Cannot divide by zero." << endl;
+            } else {
+                int result = (int)num1 % (int)num2;
+                cout << "Result: " << num1 << " % " << num2 << " = " << result << endl;
+            }
+
+        } else if (choice == 6) {
+            double result = pow(num1, num2);
+            cout << "Result: " << num1 << " ^ " << num2 << " = " << result << endl;
+        }
+
+    } while (choice != 7);
+
+    return 0;
+}
+

@@ -65,3 +65,181 @@
 #include <string>
 using namespace std;
 
+int main() {
+    int choice;
+
+    cout << "Matrix Operations Menu" << endl;
+    cout << "1. Transpose a Matrix" << endl;
+    cout << "2. Add Two Matrices" << endl;
+    cout << "3. Multiply Two Matrices" << endl;
+    cout << "Enter choice: ";
+    cin >> choice;
+
+    if (choice == 1) {
+        int rows, cols;
+        int mat[10][10], result[10][10];
+
+        cout << "Enter number of rows: ";
+        cin >> rows;
+        cout << "Enter number of columns: ";
+        cin >> cols;
+
+        cout << "Enter Matrix elements:" << endl;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                cout << "Enter element [" << i << "][" << j << "]: ";
+                cin >> mat[i][j];
+            }
+        }
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result[j][i] = mat[i][j];
+            }
+        }
+
+        cout << endl << "Original Matrix:" << endl;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                cout << setw(5) << mat[i][j];
+            }
+            cout << endl;
+        }
+
+        cout << endl << "Transposed Matrix:" << endl;
+        for (int i = 0; i < cols; i++) {
+            for (int j = 0; j < rows; j++) {
+                cout << setw(5) << result[i][j];
+            }
+            cout << endl;
+        }
+
+    } else if (choice == 2) {
+        int rows, cols;
+        int matA[10][10], matB[10][10], result[10][10];
+
+        cout << "Enter number of rows: ";
+        cin >> rows;
+        cout << "Enter number of columns: ";
+        cin >> cols;
+
+        cout << "Enter Matrix A elements:" << endl;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                cout << "Enter element [" << i << "][" << j << "]: ";
+                cin >> matA[i][j];
+            }
+        }
+
+        cout << "Enter Matrix B elements:" << endl;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                cout << "Enter element [" << i << "][" << j << "]: ";
+                cin >> matB[i][j];
+            }
+        }
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result[i][j] = matA[i][j] + matB[i][j];
+            }
+        }
+
+        cout << endl << "Matrix A:" << endl;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                cout << setw(5) << matA[i][j];
+            }
+            cout << endl;
+        }
+
+        cout << endl << "Matrix B:" << endl;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                cout << setw(5) << matB[i][j];
+            }
+            cout << endl;
+        }
+
+        cout << endl << "Sum Matrix:" << endl;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                cout << setw(5) << result[i][j];
+            }
+            cout << endl;
+        }
+
+    } else if (choice == 3) {
+        int m, n, n2, p;
+        int matA[10][10], matB[10][10], result[10][10];
+
+        cout << "Enter rows of Matrix A: ";
+        cin >> m;
+        cout << "Enter columns of Matrix A: ";
+        cin >> n;
+
+        cout << "Enter Matrix A elements:" << endl;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                cout << "Enter element [" << i << "][" << j << "]: ";
+                cin >> matA[i][j];
+            }
+        }
+
+        cout << "Enter rows of Matrix B: ";
+        cin >> n2;
+        cout << "Enter columns of Matrix B: ";
+        cin >> p;
+
+        if (n2 != n) {
+            cout << "Error: Columns of A must equal rows of B." << endl;
+            return 0;
+        }
+
+        cout << "Enter Matrix B elements:" << endl;
+        for (int i = 0; i < n2; i++) {
+            for (int j = 0; j < p; j++) {
+                cout << "Enter element [" << i << "][" << j << "]: ";
+                cin >> matB[i][j];
+            }
+        }
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < p; j++) {
+                result[i][j] = 0;
+                for (int k = 0; k < n; k++) {
+                    result[i][j] += matA[i][k] * matB[k][j];
+                }
+            }
+        }
+
+        cout << endl << "Matrix A:" << endl;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                cout << setw(5) << matA[i][j];
+            }
+            cout << endl;
+        }
+
+        cout << endl << "Matrix B:" << endl;
+        for (int i = 0; i < n2; i++) {
+            for (int j = 0; j < p; j++) {
+                cout << setw(5) << matB[i][j];
+            }
+            cout << endl;
+        }
+
+        cout << endl << "Product Matrix (A x B):" << endl;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < p; j++) {
+                cout << setw(5) << result[i][j];
+            }
+            cout << endl;
+        }
+
+    } else {
+        cout << "Invalid choice." << endl;
+    }
+
+    return 0;
+}

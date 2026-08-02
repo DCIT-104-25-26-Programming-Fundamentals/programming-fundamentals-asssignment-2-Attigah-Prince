@@ -55,5 +55,41 @@
 // =============================================================================
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
+int main() {
+    int num;
+
+    cout << "Enter a number: ";
+    cin >> num;
+
+    if (num <= 0) {
+        cout << "Error: Please enter a positive number." << endl;
+        return 0;
+    }
+
+    cout << endl << "Multiplication Table for " << num << ":" << endl;
+    for (int i = 1; i <= 12; i++) {
+        cout << num << " x " << setw(2) << i << " = " << (num * i) << endl;
+    }
+
+    int n;
+    cout << endl << "Enter N (for tables 1 to N): ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Error: Please enter a positive number." << endl;
+        return 0;
+    }
+
+    for (int t = 1; t <= n; t++) {
+        cout << endl << "Multiplication Table for " << t << ":" << endl;
+        for (int i = 1; i <= 12; i++) {
+            cout << t << " x " << setw(2) << i << " = " << (t * i) << endl;
+        }
+        cout << "---------------------------" << endl;
+    }
+
+    return 0;
+}
